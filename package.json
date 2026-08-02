@@ -1,0 +1,35 @@
+{
+  "name": "blackmagic-camera-control-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Professional multi-camera remote control and monitoring center for the Blackmagic Camera app",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,magenta \"npm run dev -w @bmcc/server\" \"npm run dev -w @bmcc/web\"",
+    "dev:server": "npm run dev -w @bmcc/server",
+    "dev:web": "npm run dev -w @bmcc/web",
+    "dev:mock": "npm run mock -w @bmcc/server",
+    "build": "npm run build -w @bmcc/web",
+    "start": "npm run start -w @bmcc/server",
+    "test": "npm run test -w @bmcc/server",
+    "typecheck": "npm run typecheck -w @bmcc/shared && npm run typecheck -w @bmcc/server && npm run typecheck -w @bmcc/web",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "esbuild@0.21.5": true
+  }
+}
